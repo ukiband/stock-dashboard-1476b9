@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1976d2">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex">
+<title>Stock Dashboard — 2026-05-01</title>
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif; margin: 0; padding: 24px 32px; background: #f5f6f8; color: #1f2328; -webkit-text-size-adjust: 100%; }
+    h1 { margin: 0 0 8px 0; font-size: 1.9em; }
+    h2 { border-left: 4px solid #1976d2; padding-left: 12px; margin-top: 32px; font-size: 1.3em; }
+    .meta { color: #666; font-size: 0.9em; margin-bottom: 24px; }
+    .meta a { color: #1976d2; text-decoration: none; margin-right: 16px; }
+    .meta a:hover { text-decoration: underline; }
+    .empty { color: #999; font-style: italic; padding: 16px; background: white; border-radius: 8px; }
+
+    /* 매수 카드 */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; }
+    .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #2e7d32; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .title .name { font-size: 1.3em; font-weight: 700; margin-right: 8px; }
+    .title .code { color: #666; font-size: 0.85em; }
+    .grade-badge { color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.85em; font-weight: 600; margin-right: 8px; vertical-align: middle; }
+    .price { text-align: right; }
+    .price-main { font-size: 1.4em; font-weight: 700; }
+    .price-chg { font-size: 0.95em; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 12px; padding: 12px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 12px; }
+    .metric { display: flex; flex-direction: column; }
+    .metric label { color: #888; font-size: 0.75em; text-transform: uppercase; }
+    .metric value { font-weight: 600; font-size: 0.95em; }
+    .thesis { font-size: 0.92em; line-height: 1.5; padding: 8px 0; color: #333; }
+    .entry-status { padding: 10px 14px; border-radius: 6px; margin: 12px 0; font-size: 0.95em; }
+    .entry-head { font-weight: 700; }
+    .entry-sub { font-size: 0.85em; color: #555; margin-top: 4px; }
+    .entry-immediate { background: #e8f5e9; color: #1b5e20; border-left: 4px solid #2e7d32; }
+    .entry-wait { background: #fff8e1; color: #8d4e00; border-left: 4px solid #f57c00; }
+    .entry-trigger { background: #e3f2fd; color: #0d47a1; border-left: 4px solid #1976d2; }
+    .entry-unknown { background: #fafafa; color: #666; border-left: 4px solid #bdbdbd; }
+    .trade-guide { background: #f5f7fa; padding: 12px 14px; border-radius: 6px; font-size: 0.88em; margin: 10px 0; }
+    .tg-section { margin-bottom: 8px; }
+    .tg-section:last-child { margin-bottom: 0; }
+    .tg-title { font-weight: 600; color: #444; margin-bottom: 4px; font-size: 0.9em; }
+    .tg-row { display: grid; grid-template-columns: auto 1fr auto 1fr auto 1fr; gap: 4px 8px; align-items: center; font-size: 0.88em; }
+    .tg-tier { color: #777; font-size: 0.85em; }
+    .tg-price { font-weight: 600; }
+    .tg-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 8px; border-top: 1px solid #e2e6ec; }
+    .tg-note { color: #888; font-size: 0.85em; }
+    .guide-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .catalyst { background: #fff3e0; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; margin: 10px 0; border-left: 3px solid #ef6c00; }
+    .catalyst-note { color: #666; font-size: 0.85em; margin-top: 4px; }
+
+    /* 정보 박스 (매크로 / 자기점검) */
+    .info-box { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; overflow: hidden; }
+    .info-header { color: white; padding: 10px 16px; font-size: 1em; }
+    .info-header b { font-size: 1.05em; }
+    .info-sub { font-size: 0.85em; opacity: 0.92; margin-left: 12px; }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .info-cell { padding: 12px 16px; border-right: 1px solid #f0f0f0; }
+    .info-cell:last-child { border-right: none; }
+    .info-label { color: #888; font-size: 0.8em; margin-bottom: 4px; }
+    .info-value { font-size: 1.05em; font-weight: 600; }
+    .info-content { padding: 12px 16px; font-size: 0.9em; }
+    .info-content ul { margin: 0; padding-left: 22px; }
+    .info-content li { margin: 4px 0; line-height: 1.5; }
+    .info-content a { color: #1976d2; text-decoration: none; display: inline-block; margin-top: 6px; }
+    .info-footnote { color: #888; font-size: 0.78em; padding: 6px 16px; background: #fafafa; }
+    .info-footnote code { background: #eee; padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 0.92em; }
+    .sani-list { list-style: none; padding-left: 0; margin: 0 0 8px 0; }
+    .sani-list li { padding: 4px 0; }
+    .sani-grade { color: #777; font-size: 0.85em; margin-left: 4px; }
+
+    /* ───────── 반응형: 모바일 (≤768px) ───────── */
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      h1 { font-size: 1.5em; }
+      h2 { font-size: 1.1em; margin-top: 24px; }
+      .meta { font-size: 0.82em; }
+      .meta a { display: inline-block; margin: 4px 12px 4px 0; }
+
+      /* 정보 박스 — 1열로 */
+      .info-grid { grid-template-columns: 1fr; }
+      .info-cell { border-right: none; border-bottom: 1px solid #f0f0f0; }
+      .info-cell:last-child { border-bottom: none; }
+      .info-header { font-size: 0.95em; padding: 10px 14px; }
+      .info-sub { display: block; margin-left: 0; margin-top: 4px; font-size: 0.85em; }
+
+      /* 매수 카드 — 1열, 헤더 세로 정렬 */
+      .cards { grid-template-columns: 1fr; gap: 12px; }
+      .card { padding: 16px; }
+      .card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .card-header .price { text-align: left; }
+      .title .name { font-size: 1.2em; }
+      .title .code { display: block; margin-top: 4px; }
+
+      /* 메트릭 — 4열 → 2열 */
+      .metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+      /* 매매 가이드 — 가로 grid → 세로 stack */
+      .tg-row { grid-template-columns: 1fr; gap: 4px; }
+      .tg-row .tg-tier { font-size: 0.85em; color: #555; }
+      .tg-row .tg-price { padding-left: 12px; margin-bottom: 4px; }
+      .tg-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .tg-note { margin-top: 4px; }
+
+      /* 테이블 가로 스크롤 */
+      table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+      th, td { padding: 8px 10px; font-size: 0.86em; }
+
+      /* 자기점검·이벤트 박스 */
+      .info-content { padding: 10px 14px; font-size: 0.88em; }
+      .sani-list li { line-height: 1.5; }
+    }
+
+    /* ───────── 좁은 모바일 (≤480px) — 메트릭도 1열 ───────── */
+    @media (max-width: 480px) {
+      .metrics { grid-template-columns: 1fr; }
+      h1 { font-size: 1.3em; }
+    }
+
+    /* Disclaimer footer */
+    .disclaimer { background: #fffbe6; border: 1px solid #f0d97c; border-radius: 8px; padding: 14px 18px; margin-top: 32px; font-size: 0.85em; line-height: 1.6; color: #555; }
+    .disclaimer b { color: #b85b00; }
+    @media (max-width: 768px) { .disclaimer { font-size: 0.8em; padding: 10px 12px; } }
+    .card-footer { margin-top: 12px; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+    .card-footer a { color: #1976d2; text-decoration: none; font-size: 0.88em; }
+
+    /* 표 */
+    table { border-collapse: collapse; width: 100%; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    th { background: #1976d2; color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.88em; }
+    td { padding: 10px 12px; border-top: 1px solid #f0f0f0; font-size: 0.92em; vertical-align: top; }
+    tr:hover td { background: #f7f9fc; }
+    small { color: #666; }
+    </style>
+</head>
+<body>
+<h1>📈 Stock Dashboard</h1>
+<div class="meta">
+  최종 갱신: 2026-04-30T23:27:33.676904 · 매수 4종 · 관찰 1종
+</div>
+
+
+<div class="info-box macro-box">
+  <div class="info-header" style="background:#f57c00">
+    📊 시장 환경 — <b>주의</b>
+    <span class="info-sub">🟡 신규 진입 비중 축소. 분할 매수 천천히.</span>
+  </div>
+  <div class="info-grid macro-grid">
+    <div class="info-cell"><div class="info-label">한국 기준금리</div><div class="info-value">🟡 3.25% <small>(동결)</small></div></div>
+    <div class="info-cell"><div class="info-label">KOSPI 12개월</div><div class="info-value">🟢 +169.7%</div></div>
+    <div class="info-cell"><div class="info-label">시장 변동성 (V-KOSPI)</div><div class="info-value">🔴 48.3</div></div>
+  </div>
+  <div class="info-footnote">사용자 판단용 정보. 종목 등급에 자동 반영 안 함.</div>
+</div>
+
+
+<div class="info-box">
+  <div class="info-header" style="background:#2e7d32">
+    ✓ 분석 자기점검 — <b>신규 의문점 없음</b>
+    <span class="info-sub">5개 핵심 룰 모두 통과</span>
+  </div>
+  <div class="info-footnote">✓ 이미 검증된 의문점 <b>11건</b> (8개 종목)은 만료일까지 자동 skip. <a href="sanity_check/2026-05-01.md" target="_blank">상세 보기</a></div>
+</div>
+
+
+<h2>🎯 매수 추천 (4종)</h2>
+<div class="cards">
+
+    <div class="card buy-card">
+      <div class="card-header">
+        <div class="title">
+          <span class="grade-badge" style="background:#1565c0;">강력매수</span>
+          <span class="name">HD한국조선해양</span>
+          <span class="code">009540 · 조선 · 조선 지주사</span>
+        </div>
+        <div class="price">
+          <div class="price-main">₩461,500</div>
+          <div class="price-chg" style="color:#c62828">-2.22%</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><label>예상 PER</label><value>8.1</value></div>
+        <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+21%</value></div>
+        <div class="metric"><label>영업이익률</label><value>+12.7%</value></div>
+        <div class="metric"><label>매출 성장률</label><value>+13.8%</value></div>
+        <div class="metric"><label>부채비율</label><value>9</value></div>
+        <div class="metric"><label>1년 가격 범위</label><value>₩260,500 ~ ₩494,500</value></div>
+      </div>
+
+      <div class="entry-status entry-wait"><div class="entry-head">🟡 조정 대기 — 1차 진입가 ₩430,000</div><div class="entry-sub">현재가에서 -6.8% 조정 필요 (현재 +7.3% 프리미엄)</div></div>
+
+      <div class="thesis">
+        <b>투자 논거</b>: 🟢 강력매수 (2026-05-01 격상). DART 검증으로 fwd PER 8.1 신뢰도 확정 (trailing 11.14배, 2026 EPS +37.6% 성장). 1Q26 잠정 호실적 정당화. 손절선 365k는 정기선 CEO 리스크·2028 발주 절벽 우려 반영해 보수적 유지.
+      </div>
+
+      <div class="trade-guide">
+        <div class="tg-section">
+          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩430,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩387,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">₩344,000</span>
+          </div>
+        </div>
+        <div class="tg-section">
+          <div class="tg-title">🎯 분할 익절</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩560,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩600,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
+          </div>
+        </div>
+        <div class="tg-section tg-bottom">
+          <span>🛑 손절: <b>₩365,000</b></span>
+          <span>⏱ 보유 중기</span>
+          <span class="tg-note">분석 기준가 ₩461,500</span>
+        </div>
+      </div>
+      
+        <div class="catalyst">
+          📅 <b>곧 다가올 이슈 (D-5)</b> · HD한국조선해양 1Q26 실적 발표
+          <div class="catalyst-note">fwd PER 8.1 검증 분기. DART 순익 yf+35% 차이 — 1Q 결과로 confirmation</div>
+        </div>
+
+      <div class="card-footer">
+        <a href="../data/research/shipbuilding/009540-HD한국조선해양.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+      </div>
+    </div>
+    
+    <div class="card buy-card">
+      <div class="card-header">
+        <div class="title">
+          <span class="grade-badge" style="background:#2e7d32;">매수</span>
+          <span class="name">피에스케이</span>
+          <span class="code">319660 · AI 반도체 · 반도체 장비 (Dry Strip / Bevel Etch)</span>
+        </div>
+        <div class="price">
+          <div class="price-main">₩88,700</div>
+          <div class="price-chg" style="color:#c62828">-4.93%</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><label>예상 PER</label><value>15.7</value></div>
+        <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+24%</value></div>
+        <div class="metric"><label>영업이익률</label><value>+15.3%</value></div>
+        <div class="metric"><label>매출 성장률</label><value>+35.7%</value></div>
+        <div class="metric"><label>부채비율</label><value>3</value></div>
+        <div class="metric"><label>1년 가격 범위</label><value>₩17,580 ~ ₩97,700</value></div>
+      </div>
+
+      <div class="entry-status entry-wait"><div class="entry-head">🟡 조정 대기 — 1차 진입가 ₩84,000</div><div class="entry-sub">현재가에서 -5.3% 조정 필요 (현재 +5.6% 프리미엄)</div></div>
+
+      <div class="thesis">
+        <b>투자 논거</b>: Deep dive 매수. fwd PER 15.7 (1차 21.2는 Q4-25 호실적 미반영). 무차입 D/E 3, OPM 15.3%, 매출 +35.7%. Bevel Etch Lam 특허 일부승소. 박경수 회장 청결한 거버넌스. 1Q26 실적 5월 중순 catalyst.
+      </div>
+
+      <div class="trade-guide">
+        <div class="tg-section">
+          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩84,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩78,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">₩72,000</span>
+          </div>
+        </div>
+        <div class="tg-section">
+          <div class="tg-title">🎯 분할 익절</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩110,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩125,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -12% 트레일링</span>
+          </div>
+        </div>
+        <div class="tg-section tg-bottom">
+          <span>🛑 손절: <b>₩71,400</b></span>
+          <span>⏱ 보유 중기</span>
+          <span class="tg-note">분석 기준가 ₩88,700</span>
+        </div>
+      </div>
+      
+        <div class="catalyst">
+          📅 <b>곧 다가올 이슈 (D-13)</b> · 피에스케이 1Q26 실적 발표 (예상)
+          <div class="catalyst-note">BNK 컨센 매출 1,313억(+71% YoY). 2026E EPS +109% 컨센 검증 분기. 미달 시 멀티플 압축 우려.</div>
+        </div>
+
+      <div class="card-footer">
+        <a href="../data/research/ai_semiconductor/319660-피에스케이.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+      </div>
+    </div>
+    
+    <div class="card buy-card">
+      <div class="card-header">
+        <div class="title">
+          <span class="grade-badge" style="background:#2e7d32;">매수</span>
+          <span class="name">삼성중공업</span>
+          <span class="code">010140 · 조선 · 대형 조선 (LNG선·FLNG 순수 플레이)</span>
+        </div>
+        <div class="price">
+          <div class="price-main">₩32,350</div>
+          <div class="price-chg" style="color:#c62828">-1.97%</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><label>예상 PER</label><value>17.8</value></div>
+        <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+11%</value></div>
+        <div class="metric"><label>영업이익률</label><value>+10.4%</value></div>
+        <div class="metric"><label>매출 성장률</label><value>+5.1%</value></div>
+        <div class="metric"><label>부채비율</label><value>56</value></div>
+        <div class="metric"><label>1년 가격 범위</label><value>₩14,030 ~ ₩35,350</value></div>
+      </div>
+
+      <div class="entry-status entry-immediate"><div class="entry-head">🟢 즉시 분할 매수 가능 — 1차 ₩32,000</div><div class="entry-sub">현재가 vs 1차 진입가: +1.1% (5% 이내)</div></div>
+
+      <div class="thesis">
+        <b>투자 논거</b>: Deep dive 매수. fwd PER 17.8. 8년 적자 종결 → 25년 영업익 +71% / 26Q1 잠정 +122% (4-30 발표). 부채 56% (HD현대중공업 180% 대비 압도적). FLNG 287억불 잔고 + 70억불 파이프라인. 최성안 단독대표 청결 거버넌스. HDKSOE와 동시 보유 추천.
+      </div>
+
+      <div class="trade-guide">
+        <div class="tg-section">
+          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩32,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩30,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">₩27,500</span>
+          </div>
+        </div>
+        <div class="tg-section">
+          <div class="tg-title">🎯 분할 익절</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩36,000</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩41,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
+          </div>
+        </div>
+        <div class="tg-section tg-bottom">
+          <span>🛑 손절: <b>₩27,200</b></span>
+          <span>⏱ 보유 중기</span>
+          <span class="tg-note">분석 기준가 ₩32,350</span>
+        </div>
+      </div>
+      
+        <div class="catalyst">
+          📅 <b>곧 다가올 이슈 (D-59)</b> · 삼성중공업 FLNG Delfin 1·2 최종계약 (1H26 예상)
+          <div class="catalyst-note">70억불+ 수주 파이프라인. Delfin 1·2 미국, ZLNG 말레이시아, Ksi Lisims 1 캐나다 동시 진행. 확정 시 목표가 41k(+27%) 진입.</div>
+        </div>
+
+      <div class="card-footer">
+        <a href="../data/research/shipbuilding/010140-삼성중공업.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+      </div>
+    </div>
+    
+    <div class="card buy-card">
+      <div class="card-header">
+        <div class="title">
+          <span class="grade-badge" style="background:#2e7d32;">매수</span>
+          <span class="name">한국카본</span>
+          <span class="code">017960 · 조선 · LNG선 초저온 보냉재 + 카본/항공기 부품</span>
+        </div>
+        <div class="price">
+          <div class="price-main">₩49,550</div>
+          <div class="price-chg" style="color:#c62828">-1.69%</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><label>예상 PER</label><value>17.9</value></div>
+        <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+9%</value></div>
+        <div class="metric"><label>영업이익률</label><value>+16.5%</value></div>
+        <div class="metric"><label>매출 성장률</label><value>+19.4%</value></div>
+        <div class="metric"><label>부채비율</label><value>21</value></div>
+        <div class="metric"><label>1년 가격 범위</label><value>₩19,350 ~ ₩54,100</value></div>
+      </div>
+
+      <div class="entry-status entry-immediate"><div class="entry-head">🟢 즉시 분할 매수 가능 — 1차 ₩49,500</div><div class="entry-sub">현재가 vs 1차 진입가: +0.1% (5% 이내)</div></div>
+
+      <div class="thesis">
+        <b>투자 논거</b>: Deep dive 매수. fwd PER 17.9, DART 영업익 +188% 모멘텀 견고. 한국 빅3 lock-in + Triplex 독점. 🟡 1차 진입 비중 50→30% 축소 (2026-05-01) — PBR 5.14 + 1년 +180% 단기 과열로 보수화. 진입가·손절은 동일.
+      </div>
+
+      <div class="trade-guide">
+        <div class="tg-section">
+          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩49,500</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩45,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">₩41,000</span>
+          </div>
+        </div>
+        <div class="tg-section">
+          <div class="tg-title">🎯 분할 익절</div>
+          <div class="tg-row">
+            <span class="tg-tier">1차 50%</span><span class="tg-price">₩54,200</span>
+            <span class="tg-tier">2차 30%</span><span class="tg-price">₩62,000</span>
+            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
+          </div>
+        </div>
+        <div class="tg-section tg-bottom">
+          <span>🛑 손절: <b>₩42,100</b></span>
+          <span>⏱ 보유 중기</span>
+          <span class="tg-note">분석 기준가 ₩49,550</span>
+        </div>
+      </div>
+      
+        <div class="catalyst">
+          📅 <b>곧 다가올 이슈 (D-13)</b> · 한국카본 1Q26 실적 발표 (예상)
+          <div class="catalyst-note">2026 가이드 영업익 1,400억 페이스 검증 critical event. 25Q4 영업익 383억 페이스 유지 시 신뢰도 높음.</div>
+        </div>
+
+      <div class="card-footer">
+        <a href="../data/research/shipbuilding/017960-한국카본.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+      </div>
+    </div>
+    
+</div>
+
+<h2>👀 관찰 — 가격 조정 후 매수 검토 (1종)</h2>
+<table><thead><tr><th>종목</th><th>섹터</th><th>현재가 (1일변동)</th><th>예상 PER</th><th>증권사 목표가</th><th>매수 trigger 가격</th><th>곧 다가올 이슈</th></tr></thead><tbody>
+    <tr>
+      <td><b>솔브레인</b><br><small>357780</small></td>
+      <td>AI 반도체</td>
+      <td>₩458,000 <small style="color:#c62828">-4.38%</small></td>
+      <td>18.7</td>
+      <td>₩480,000</td>
+      <td><b>₩410,000</b><br><small style='color:#1565c0'>현재가 -11.7% 도달 시</small></td>
+      <td><small>D-16: 솔브레인 1Q26 실적 발표</small></td>
+    </tr>
+    </tbody></table>
+
+<h2>📅 앞으로 30일 주요 이벤트 (4건)</h2>
+<table><thead><tr><th>날짜</th><th>종목</th><th>유형 (영향)</th><th>이벤트</th><th>맥락</th></tr></thead><tbody>
+    <tr>
+      <td><b>2026-05-07</b><br><small>D-5</small></td>
+      <td><b>HD한국조선해양</b><br><small>009540</small></td>
+      <td>📊 실적 발표 <span title="영향 강도" style="color:#c62828;">(강)</span></td>
+      <td>HD한국조선해양 1Q26 실적 발표</td>
+      <td><small>fwd PER 8.1 검증 분기. DART 순익 yf+35% 차이 — 1Q 결과로 confirmation</small></td>
+    </tr>
+    
+    <tr>
+      <td><b>2026-05-15</b><br><small>D-13</small></td>
+      <td><b>피에스케이</b><br><small>319660</small></td>
+      <td>📊 실적 발표 <span title="영향 강도" style="color:#c62828;">(강)</span></td>
+      <td>피에스케이 1Q26 실적 발표 (예상)</td>
+      <td><small>BNK 컨센 매출 1,313억(+71% YoY). 2026E EPS +109% 컨센 검증 분기. 미달 시 멀티플 압축 우려.</small></td>
+    </tr>
+    
+    <tr>
+      <td><b>2026-05-15</b><br><small>D-13</small></td>
+      <td><b>한국카본</b><br><small>017960</small></td>
+      <td>📊 실적 발표 <span title="영향 강도" style="color:#c62828;">(강)</span></td>
+      <td>한국카본 1Q26 실적 발표 (예상)</td>
+      <td><small>2026 가이드 영업익 1,400억 페이스 검증 critical event. 25Q4 영업익 383억 페이스 유지 시 신뢰도 높음.</small></td>
+    </tr>
+    
+    <tr>
+      <td><b>2026-05-18</b><br><small>D-16</small></td>
+      <td><b>솔브레인</b><br><small>357780</small></td>
+      <td>📊 실적 발표 <span title="영향 강도" style="color:#c62828;">(강)</span></td>
+      <td>솔브레인 1Q26 실적 발표</td>
+      <td><small>NAND 가동률 회복 시그널 + 매출 1조 클럽 복귀 catalyst</small></td>
+    </tr>
+    </tbody></table>
+
+<div class="disclaimer">
+  ⚠️ <b>이 대시보드는 개인 투자 분석용</b>입니다. 투자 자문/조언/추천이 아니며, 작성자 본인의 분석 메모입니다.
+  공개 데이터(yfinance·KRX·DART) 기반의 자동 산출 결과로 오류·지연·누락이 있을 수 있습니다.
+  투자 결정·결과의 모든 책임은 의사결정 본인에게 있습니다.
+  <br><small>Generated at 2026-05-01T00:47:31.099808 · 검토 후 부적합 판정 종목은 노출 제외</small>
+</div>
+</body>
+</html>
