@@ -52,6 +52,23 @@
     .catalyst { background: #fff3e0; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; margin: 10px 0; border-left: 3px solid #ef6c00; }
     .catalyst-note { color: #666; font-size: 0.85em; margin-top: 4px; }
 
+    /* 🤖 깔때기 박스 (결정론 코드 산출) */
+    .funnel-block { background: #f0f7f4; border: 1px solid #c8e6d0; border-radius: 6px; padding: 10px 12px; margin: 10px 0; font-size: 0.9em; }
+    .funnel-block.funnel-block-fail { background: #fef0f0; border-color: #ffcdd2; }
+    .funnel-block.funnel-na { background: #fafafa; border-color: #e0e0e0; color: #888; text-align: center; }
+    .funnel-header { font-weight: 600; margin-bottom: 6px; color: #2e7d32; }
+    .funnel-block-fail .funnel-header { color: #c62828; }
+    .funnel-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+    .funnel-cell { flex: 1; min-width: 150px; padding: 4px 8px; background: white; border-radius: 4px; font-size: 0.88em; }
+    .reliability summary { cursor: pointer; font-size: 0.9em; padding: 4px 0; color: #1565c0; font-weight: 600; outline: none; }
+    .reliability summary::marker, .reliability summary::-webkit-details-marker { color: #1565c0; }
+    .reliability-list { list-style: none; padding-left: 0; margin: 6px 0 0 0; font-size: 0.85em; }
+    .reliability-list li { padding: 3px 0; }
+    @media (max-width: 768px) {
+      .funnel-row { flex-direction: column; gap: 4px; }
+      .funnel-cell { min-width: 0; }
+    }
+
     /* 정보 박스 (매크로 / 자기점검) */
     .info-box { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 16px; overflow: hidden; }
     .info-header { color: white; padding: 10px 16px; font-size: 1em; }
@@ -138,7 +155,16 @@
 <body>
 <h1>📈 Stock Dashboard</h1>
 <div class="meta">
-  최종 갱신: 2026-05-05T21:52:33.925401 · 매수 4종 · 관찰 1종
+  최종 갱신: 2026-05-05T22:09:44.042790 · 매수 4종 · 관찰 1종
+</div>
+
+
+<div class="info-box">
+  <div class="info-header" style="background:#1976d2">
+    🛡️ 게이트 7 — <b>🔵 백테스트 데이터 부족 (통과 간주)</b>
+    <span class="info-sub">평가 보류 6건</span>
+  </div>
+  <div class="info-footnote">평가 가능 history 부족 (mature 0건 &lt; 3건, 평가 보류 6건) — 통과로 간주, 신뢰도 낮음</div>
 </div>
 
 
@@ -180,6 +206,29 @@
           <div class="price-chg" style="color:#2e7d32">+1.73%</div>
         </div>
       </div>
+
+      
+      <div class="funnel-block funnel-pass">
+        <div class="funnel-header">
+          🤖 <b>자동 분석 (결정론 코드 산출)</b> ✅
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-cell">✅ 통과 저평가 — <small>같은 업종 평균보다 49% 싸다</small></span>
+          <span class="funnel-cell">🟢 적정 타이밍 — <small>52주 위치 89%</small></span>
+          <span class="funnel-cell">✅ 안전 위험 — <small>박제된 위험 없음</small></span>
+        </div>
+        <details class="reliability">
+          <summary>🛡️ 신뢰도 7/7 통과 — 매수 결정 즉시 가능</summary>
+          <ul class="reliability-list"><li>✅ 데이터 4-source 일치</li>
+<li>✅ 점수 안정 (어제 대비 ±5%)</li>
+<li>✅ LLM 권고 출처 박제</li>
+<li>✅ 박제 적용 정상</li>
+<li>✅ 자기점검 5룰 통과</li>
+<li>✅ 사후 추적 hit rate</li>
+<li>✅ 백테스트 통과</li></ul>
+        </details>
+      </div>
+    
 
       <div class="metrics">
         <div class="metric"><label>예상 PER</label><value>8.2</value></div>
@@ -226,7 +275,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="../data/research/shipbuilding/009540-HD한국조선해양.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/009540-HD한국조선해양.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
       </div>
     </div>
     
@@ -242,6 +291,29 @@
           <div class="price-chg" style="color:#c62828">-1.51%</div>
         </div>
       </div>
+
+      
+      <div class="funnel-block funnel-block-fail">
+        <div class="funnel-header">
+          🤖 <b>자동 분석 (결정론 코드 산출)</b> ❌
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-cell">❌ 탈락 저평가 — <small>같은 업종 평균보다 비쌈</small></span>
+          <span class="funnel-cell">🟢 적정 타이밍 — <small>52주 위치 85%</small></span>
+          <span class="funnel-cell">✅ 안전 위험 — <small>박제된 위험 없음</small></span>
+        </div>
+        <details class="reliability">
+          <summary>🛡️ 신뢰도 7/7 통과 — 매수 결정 즉시 가능</summary>
+          <ul class="reliability-list"><li>✅ 데이터 4-source 일치</li>
+<li>✅ 점수 안정 (어제 대비 ±5%)</li>
+<li>✅ LLM 권고 출처 박제</li>
+<li>✅ 박제 적용 정상</li>
+<li>✅ 자기점검 5룰 통과</li>
+<li>✅ 사후 추적 hit rate</li>
+<li>✅ 백테스트 통과</li></ul>
+        </details>
+      </div>
+    
 
       <div class="metrics">
         <div class="metric"><label>예상 PER</label><value>17.6</value></div>
@@ -288,7 +360,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="../data/research/shipbuilding/017960-한국카본.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/017960-한국카본.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
       </div>
     </div>
     
@@ -297,13 +369,36 @@
         <div class="title">
           <span class="grade-badge" style="background:#2e7d32;">매수</span>
           <span class="name">피에스케이</span>
-          <span class="code">319660 · AI 반도체 · 반도체 장비 (Dry Strip / Bevel Etch)</span>
+          <span class="code">319660 · 반도체 · 반도체 장비 (Dry Strip / Bevel Etch)</span>
         </div>
         <div class="price">
           <div class="price-main">₩100,100</div>
           <div class="price-chg" style="color:#2e7d32">+12.85%</div>
         </div>
       </div>
+
+      
+      <div class="funnel-block funnel-block-fail">
+        <div class="funnel-header">
+          🤖 <b>자동 분석 (결정론 코드 산출)</b> ❌
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-cell">✅ 통과 저평가 — <small>같은 업종 평균보다 4% 싸다</small></span>
+          <span class="funnel-cell">🔥 과열 타이밍 — <small>신고가 부근 (52주 위치 99%), 오늘 +12.9%</small></span>
+          <span class="funnel-cell">✅ 안전 위험 — <small>박제된 위험 없음</small></span>
+        </div>
+        <details class="reliability">
+          <summary>🛡️ 신뢰도 7/7 통과 — 매수 결정 즉시 가능</summary>
+          <ul class="reliability-list"><li>✅ 데이터 4-source 일치</li>
+<li>✅ 점수 안정 (어제 대비 ±5%)</li>
+<li>✅ LLM 권고 출처 박제</li>
+<li>✅ 박제 적용 정상</li>
+<li>✅ 자기점검 5룰 통과</li>
+<li>✅ 사후 추적 hit rate</li>
+<li>✅ 백테스트 통과</li></ul>
+        </details>
+      </div>
+    
 
       <div class="metrics">
         <div class="metric"><label>예상 PER</label><value>17.7</value></div>
@@ -350,7 +445,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="../data/research/ai_semiconductor/319660-피에스케이.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/semiconductor/319660-피에스케이.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
       </div>
     </div>
     
@@ -366,6 +461,29 @@
           <div class="price-chg" style="color:#c62828">-0.31%</div>
         </div>
       </div>
+
+      
+      <div class="funnel-block funnel-block-fail">
+        <div class="funnel-header">
+          🤖 <b>자동 분석 (결정론 코드 산출)</b> ❌
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-cell">❌ 탈락 저평가 — <small>같은 업종 평균보다 비쌈</small></span>
+          <span class="funnel-cell">🟢 적정 타이밍 — <small>52주 위치 85%</small></span>
+          <span class="funnel-cell">✅ 안전 위험 — <small>박제된 위험 없음</small></span>
+        </div>
+        <details class="reliability">
+          <summary>🛡️ 신뢰도 7/7 통과 — 매수 결정 즉시 가능</summary>
+          <ul class="reliability-list"><li>✅ 데이터 4-source 일치</li>
+<li>✅ 점수 안정 (어제 대비 ±5%)</li>
+<li>✅ LLM 권고 출처 박제</li>
+<li>✅ 박제 적용 정상</li>
+<li>✅ 자기점검 5룰 통과</li>
+<li>✅ 사후 추적 hit rate</li>
+<li>✅ 백테스트 통과</li></ul>
+        </details>
+      </div>
+    
 
       <div class="metrics">
         <div class="metric"><label>예상 PER</label><value>17.8</value></div>
@@ -412,7 +530,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="../data/research/shipbuilding/010140-삼성중공업.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/010140-삼성중공업.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
       </div>
     </div>
     
@@ -422,7 +540,7 @@
 <table><thead><tr><th>종목</th><th>섹터</th><th>현재가 (1일변동)</th><th>예상 PER</th><th>증권사 목표가</th><th>매수 trigger 가격</th><th>곧 다가올 이슈</th></tr></thead><tbody>
     <tr>
       <td><b>솔브레인</b><br><small>357780</small></td>
-      <td>AI 반도체</td>
+      <td>반도체</td>
       <td>₩458,500 <small style="color:#2e7d32">+0.11%</small></td>
       <td>18.7</td>
       <td>₩480,000</td>
@@ -466,11 +584,15 @@
     </tr>
     </tbody></table>
 
+<p style="text-align: center; margin-top: 24px; font-size: 0.85em;">
+  🔍 <a href="workflow/2026-05-05/00-summary.md" target="_blank" style="color: #666;">오늘 워크플로우 단계별 상세 로그 →</a>
+</p>
+
 <div class="disclaimer">
   ⚠️ <b>이 대시보드는 개인 투자 분석용</b>입니다. 투자 자문/조언/추천이 아니며, 작성자 본인의 분석 메모입니다.
   공개 데이터(yfinance·KRX·DART) 기반의 자동 산출 결과로 오류·지연·누락이 있을 수 있습니다.
   투자 결정·결과의 모든 책임은 의사결정 본인에게 있습니다.
-  <br><small>Generated at 2026-05-05T21:53:14.877481 · 검토 후 부적합 판정 종목은 노출 제외</small>
+  <br><small>Generated at 2026-05-05T22:10:29.596563 · 검토 후 부적합 판정 종목은 노출 제외</small>
 </div>
 </body>
 </html>
