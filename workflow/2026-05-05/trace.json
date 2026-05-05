@@ -123,7 +123,7 @@
       ],
       "korea_risk": [
         "✅ 안전",
-        "박제된 위험 없음"
+        "확인된 위험 없음"
       ],
       "passed_gate1": false,
       "passed_gate2": true,
@@ -204,7 +204,7 @@
       ],
       "korea_risk": [
         "✅ 안전",
-        "박제된 위험 없음"
+        "확인된 위험 없음"
       ],
       "passed_gate1": true,
       "passed_gate2": true,
@@ -285,7 +285,7 @@
       ],
       "korea_risk": [
         "✅ 안전",
-        "박제된 위험 없음"
+        "확인된 위험 없음"
       ],
       "passed_gate1": true,
       "passed_gate2": false,
@@ -312,7 +312,7 @@
       ],
       "korea_risk": [
         "✅ 안전",
-        "박제된 위험 없음"
+        "확인된 위험 없음"
       ],
       "passed_gate1": false,
       "passed_gate2": true,
@@ -339,7 +339,7 @@
       ],
       "korea_risk": [
         "✅ 안전",
-        "박제된 위험 없음"
+        "확인된 위험 없음"
       ],
       "passed_gate1": false,
       "passed_gate2": true,
