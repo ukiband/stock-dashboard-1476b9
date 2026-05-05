@@ -98,8 +98,8 @@
       "backtest_present": true
     },
     "decisions": {
-      "eligible": 1,
-      "blocked": 8
+      "eligible": 3,
+      "blocked": 6
     }
   },
   "results": [
