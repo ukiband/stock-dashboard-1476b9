@@ -98,8 +98,8 @@
       "backtest_present": true
     },
     "decisions": {
-      "eligible": 1,
-      "blocked": 8
+      "eligible": 0,
+      "blocked": 9
     }
   },
   "results": [
@@ -114,7 +114,7 @@
       "pos_52w_pct": 80.93333333333334,
       "chg_1d_pct": 0.10917030567685337,
       "valuation": [
-        "❌",
+        "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
@@ -122,7 +122,7 @@
         "52주 위치 81%"
       ],
       "korea_risk": [
-        "✅ 안전",
+        "",
         "확인된 위험 없음"
       ],
       "passed_gate1": false,
@@ -141,7 +141,7 @@
       "pos_52w_pct": 93.91979301423027,
       "chg_1d_pct": 1.379310344827589,
       "valuation": [
-        "❌",
+        "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
@@ -149,8 +149,8 @@
         "52주 위치 94%"
       ],
       "korea_risk": [
-        "⚠️ 주의",
-        "오너/CEO 리스크"
+        "",
+        "주의: 오너/CEO 리스크"
       ],
       "passed_gate1": false,
       "passed_gate2": true,
@@ -168,7 +168,7 @@
       "pos_52w_pct": 96.88141157160443,
       "chg_1d_pct": 17.63265306122448,
       "valuation": [
-        "❌",
+        "",
         "업종·자기과거 모두보다 비쌈"
       ],
       "timing": [
@@ -176,8 +176,8 @@
         "신고가 부근 (52주 위치 97%), 오늘 +17.6%"
       ],
       "korea_risk": [
-        "⚠️ 주의",
-        "외부 사법"
+        "",
+        "주의: 외부 사법"
       ],
       "passed_gate1": false,
       "passed_gate2": false,
@@ -195,7 +195,7 @@
       "pos_52w_pct": 89.31623931623932,
       "chg_1d_pct": 1.7334777898158071,
       "valuation": [
-        "✅",
+        "",
         "같은 업종 평균보다 49% 싸다"
       ],
       "timing": [
@@ -203,13 +203,13 @@
         "52주 위치 89%"
       ],
       "korea_risk": [
-        "✅ 안전",
+        "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": true,
+      "passed_gate1": false,
       "passed_gate2": true,
       "passed_gate3": true,
-      "buy_eligible": true
+      "buy_eligible": false
     },
     {
       "code": "329180",
@@ -222,7 +222,7 @@
       "pos_52w_pct": 91.17647058823529,
       "chg_1d_pct": -0.7299270072992692,
       "valuation": [
-        "❌",
+        "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
@@ -230,8 +230,8 @@
         "52주 위치 91%"
       ],
       "korea_risk": [
-        "⚠️ 주의",
-        "오너/CEO 리스크"
+        "",
+        "주의: 오너/CEO 리스크"
       ],
       "passed_gate1": false,
       "passed_gate2": true,
@@ -249,7 +249,7 @@
       "pos_52w_pct": 99.14780292942743,
       "chg_1d_pct": 8.077709611451933,
       "valuation": [
-        "✅",
+        "",
         "같은 업종 평균보다 5% 싸다"
       ],
       "timing": [
@@ -257,12 +257,12 @@
         "신고가 부근 (52주 위치 99%), 오늘 +8.1%"
       ],
       "korea_risk": [
-        "🚨 위험",
-        "오너/CEO 리스크 + 외부 사법"
+        "",
+        "다중 위험: 오너/CEO 리스크 + 외부 사법"
       ],
-      "passed_gate1": true,
+      "passed_gate1": false,
       "passed_gate2": false,
-      "passed_gate3": false,
+      "passed_gate3": true,
       "buy_eligible": false
     },
     {
@@ -276,7 +276,7 @@
       "pos_52w_pct": 98.68452523319779,
       "chg_1d_pct": 12.852311161217589,
       "valuation": [
-        "✅",
+        "",
         "같은 업종 평균보다 4% 싸다"
       ],
       "timing": [
@@ -284,10 +284,10 @@
         "신고가 부근 (52주 위치 99%), 오늘 +12.9%"
       ],
       "korea_risk": [
-        "✅ 안전",
+        "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": true,
+      "passed_gate1": false,
       "passed_gate2": false,
       "passed_gate3": true,
       "buy_eligible": false
@@ -303,7 +303,7 @@
       "pos_52w_pct": 85.45966228893059,
       "chg_1d_pct": -0.3091190108191699,
       "valuation": [
-        "❌",
+        "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
@@ -311,7 +311,7 @@
         "52주 위치 85%"
       ],
       "korea_risk": [
-        "✅ 안전",
+        "",
         "확인된 위험 없음"
       ],
       "passed_gate1": false,
@@ -330,7 +330,7 @@
       "pos_52w_pct": 84.72182185067743,
       "chg_1d_pct": -1.5136226034308753,
       "valuation": [
-        "❌",
+        "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
@@ -338,7 +338,7 @@
         "52주 위치 85%"
       ],
       "korea_risk": [
-        "✅ 안전",
+        "",
         "확인된 위험 없음"
       ],
       "passed_gate1": false,
