@@ -63,6 +63,23 @@
     .catalyst { background: #fff3e0; padding: 10px 12px; border-radius: 6px; font-size: 0.9em; margin: 10px 0; border-left: 3px solid #ef6c00; }
     .catalyst-note { color: #666; font-size: 0.85em; margin-top: 4px; }
 
+    /* 단순 카드 — 실적·가격 두 축 */
+    .simple-block { padding: 10px 14px; margin: 10px 0; background: #f5f7fa; border-radius: 6px; }
+    .block-title { font-weight: 700; font-size: 0.92em; color: #455a64; margin-bottom: 4px; }
+    .block-content { font-size: 0.95em; line-height: 1.5; color: #1f2328; }
+    .block-content b { font-size: 1.05em; }
+    .block-content small { color: #888; font-size: 0.82em; }
+
+    .trade-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px 14px; background: #eceff1; border-radius: 6px; margin: 10px 0; text-align: center; font-size: 0.92em; }
+    .trade-bar span small { color: #666; display: block; margin-bottom: 2px; font-size: 0.8em; }
+    .trade-bar span b { font-size: 1em; color: #1f2328; }
+    @media (max-width: 768px) {
+      .trade-bar { grid-template-columns: 1fr; gap: 6px; padding: 10px 12px; }
+      .trade-bar span { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #d6dadd; }
+      .trade-bar span:last-child { border-bottom: none; }
+      .trade-bar span small { display: inline; margin: 0; }
+    }
+
     /* 🤖 깔때기 박스 (결정론 코드 산출) */
     .funnel-block { background: #f0f7f4; border: 1px solid #c8e6d0; border-radius: 6px; padding: 10px 12px; margin: 10px 0; font-size: 0.9em; }
     /* 결정론 ❌(미통과) — 빨간색 대신 중립 회색 톤. 사용자 deep dive 등급(매수)과 시각 충돌 회피. */
@@ -167,7 +184,7 @@
 <body>
 <h1>📈 Stock Dashboard</h1>
 <div class="meta">
-  최종 갱신: 2026-05-05T22:47:27.588157 · 매수 4종 · 관찰 1종
+  최종 갱신: 2026-05-05T22:57:58.345124 · 매수 4종 · 관찰 1종
   <a href="javascript:location.href='?v='+Date.now()" class="refresh-btn">🔄 최신으로 새로고침</a>
 </div>
 
@@ -212,7 +229,7 @@
         <div class="title">
           <span class="grade-badge" style="background:#1565c0;">강력매수</span>
           <span class="name">HD한국조선해양</span>
-          <span class="code">009540 · 조선 · 조선 지주사</span>
+          <span class="code">009540 · 조선</span>
         </div>
         <div class="price">
           <div class="price-main">₩469,500</div>
@@ -220,69 +237,22 @@
         </div>
       </div>
 
-      
-      <div class="funnel-block funnel-pass">
-        <div class="funnel-header">
-          🤖 <b>가격·타이밍·위험 자동 점검</b> ✅
+      <div class="simple-block">
+        <div class="block-title">📈 실적</div>
+        <div class="block-content">
+          매출 <b>+13.8%</b> <small>(지난 1년)</small>  ·  이익 <b>-</b> <small>예상 (내년)</small>
         </div>
-        <div class="funnel-row">
-          <span class="funnel-cell">✅ 통과 <b>가격</b> — <small>같은 업종 평균보다 49% 싸다</small></span>
-          <span class="funnel-cell">🟢 적정 <b>타이밍</b> — <small>52주 위치 89%</small></span>
-          <span class="funnel-cell">✅ 안전 <b>한국 위험</b> — <small>확인된 위험 없음</small></span>
-        </div>
-        <details class="reliability">
-          <summary>🛡️ 분석 신뢰도 7/7 통과 — 매수 결정 즉시 가능</summary>
-          <ul class="reliability-list"><li>✅ 여러 데이터 출처 일치</li>
-<li>✅ 점수 안정성 (어제 대비 큰 변동 없음)</li>
-<li>✅ 추가 정보 출처 확인</li>
-<li>✅ 추가 정보 반영 정상</li>
-<li>✅ 분석 자가 검증 통과</li>
-<li>✅ 보유·관찰 종목 추적</li>
-<li>✅ 지난 추천 적중률 검증</li></ul>
-        </details>
-      </div>
-    
-
-      <details class="metrics-details">
-        <summary>📊 상세 지표 펼치기 (이익 대비 가격 · 영업이익률 · 부채비율 등)</summary>
-        <div class="metrics">
-          <div class="metric"><label>이익 대비 가격 (1년 후 예상)</label><value>8.2</value><small class="metric-hint">앞으로 1년 예상 이익 대비 주가가 몇 배인지. 낮을수록 싸다. (전문 용어: 예상 PER · forward PER)</small></div>
-          <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+19%</value><small class="metric-hint">증권사 평균 목표가까지의 상승 폭.</small></div>
-          <div class="metric"><label>영업이익률</label><value>+12.7%</value><small class="metric-hint">매출 100원당 영업이익. 높을수록 이익 잘 내는 회사.</small></div>
-          <div class="metric"><label>매출 성장률</label><value>+13.8%</value><small class="metric-hint">전년 대비 매출 증감.</small></div>
-          <div class="metric"><label>부채비율</label><value>9</value><small class="metric-hint">자본 대비 부채. 높을수록 재무 위험.</small></div>
-          <div class="metric"><label>1년 가격 범위</label><value>₩260,500 ~ ₩494,500</value><small class="metric-hint">52주 최저~최고.</small></div>
-        </div>
-      </details>
-
-      <div class="entry-status entry-wait"><div class="entry-head">🟡 조정 대기 — 1차 진입가 ₩430,000</div><div class="entry-sub">현재가에서 -8.4% 조정 필요 (현재 +9.2% 프리미엄)</div></div>
-
-      <div class="thesis">
-        <b>투자 논거</b>: 🟢 강력매수 (2026-05-01 격상). DART 검증으로 fwd PER 8.1 신뢰도 확정 (trailing 11.14배, 2026 EPS +37.6% 성장). 1Q26 잠정 호실적 정당화. 손절선 365k는 정기선 CEO 리스크·2028 발주 절벽 우려 반영해 보수적 유지.
       </div>
 
-      <div class="trade-guide">
-        <div class="tg-section">
-          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩430,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩387,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">₩344,000</span>
-          </div>
-        </div>
-        <div class="tg-section">
-          <div class="tg-title">🎯 분할 익절</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩560,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩600,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
-          </div>
-        </div>
-        <div class="tg-section tg-bottom">
-          <span>🛑 손절: <b>₩365,000</b></span>
-          <span>⏱ 보유 중기</span>
-          <span class="tg-note">분석 기준가 ₩461,500</span>
-        </div>
+      <div class="simple-block">
+        <div class="block-title">💰 가격</div>
+        <div class="block-content">✅ 통과 같은 업종 평균보다 49% 싸다</div>
+      </div>
+
+      <div class="trade-bar">
+        <span><small>진입</small> <b>₩430,000</b></span>
+        <span><small>손절</small> <b>₩365,000</b></span>
+        <span><small>익절</small> <b>₩560,000</b></span>
       </div>
       
         <div class="catalyst">
@@ -291,7 +261,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="research/shipbuilding/009540-HD한국조선해양.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/009540-HD한국조선해양.md" target="_blank">📋 상세 분석 노트</a>
       </div>
     </div>
     
@@ -300,7 +270,7 @@
         <div class="title">
           <span class="grade-badge" style="background:#2e7d32;">매수</span>
           <span class="name">한국카본</span>
-          <span class="code">017960 · 조선 · LNG선 초저온 보냉재 + 카본/항공기 부품</span>
+          <span class="code">017960 · 조선</span>
         </div>
         <div class="price">
           <div class="price-main">₩48,800</div>
@@ -308,69 +278,22 @@
         </div>
       </div>
 
-      
-      <div class="funnel-block funnel-block-fail">
-        <div class="funnel-header">
-          🤖 <b>가격·타이밍·위험 자동 점검</b> ❌
+      <div class="simple-block">
+        <div class="block-title">📈 실적</div>
+        <div class="block-content">
+          매출 <b>+19.4%</b> <small>(지난 1년)</small>  ·  이익 <b>-</b> <small>예상 (내년)</small>
         </div>
-        <div class="funnel-row">
-          <span class="funnel-cell">❌ 탈락 <b>가격</b> — <small>같은 업종 평균보다 비쌈</small></span>
-          <span class="funnel-cell">🟢 적정 <b>타이밍</b> — <small>52주 위치 85%</small></span>
-          <span class="funnel-cell">✅ 안전 <b>한국 위험</b> — <small>확인된 위험 없음</small></span>
-        </div>
-        <details class="reliability">
-          <summary>🛡️ 분석 신뢰도 6/7 통과 (1개 검토 필요)</summary>
-          <ul class="reliability-list"><li>✅ 여러 데이터 출처 일치</li>
-<li>⚠️ 점수 안정성 (어제 대비 큰 변동 없음) <small style="color:#c62828;">— 본인이 검토 필요</small></li>
-<li>✅ 추가 정보 출처 확인</li>
-<li>✅ 추가 정보 반영 정상</li>
-<li>✅ 분석 자가 검증 통과</li>
-<li>✅ 보유·관찰 종목 추적</li>
-<li>✅ 지난 추천 적중률 검증</li></ul>
-        </details>
-      </div>
-    
-
-      <details class="metrics-details">
-        <summary>📊 상세 지표 펼치기 (이익 대비 가격 · 영업이익률 · 부채비율 등)</summary>
-        <div class="metrics">
-          <div class="metric"><label>이익 대비 가격 (1년 후 예상)</label><value>17.6</value><small class="metric-hint">앞으로 1년 예상 이익 대비 주가가 몇 배인지. 낮을수록 싸다. (전문 용어: 예상 PER · forward PER)</small></div>
-          <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+11%</value><small class="metric-hint">증권사 평균 목표가까지의 상승 폭.</small></div>
-          <div class="metric"><label>영업이익률</label><value>+16.5%</value><small class="metric-hint">매출 100원당 영업이익. 높을수록 이익 잘 내는 회사.</small></div>
-          <div class="metric"><label>매출 성장률</label><value>+19.4%</value><small class="metric-hint">전년 대비 매출 증감.</small></div>
-          <div class="metric"><label>부채비율</label><value>21</value><small class="metric-hint">자본 대비 부채. 높을수록 재무 위험.</small></div>
-          <div class="metric"><label>1년 가격 범위</label><value>₩19,410 ~ ₩54,100</value><small class="metric-hint">52주 최저~최고.</small></div>
-        </div>
-      </details>
-
-      <div class="entry-status entry-immediate"><div class="entry-head">🟢 즉시 분할 매수 가능 — 1차 ₩49,500</div><div class="entry-sub">현재가 vs 1차 진입가: -1.4% (5% 이내)</div><div class="entry-warning">⚠️ <b>주의</b>: 위 🤖 자동 점검은 ❌입니다. 사실·맥락을 종합한 <b>심층 분석 결과(매수)</b>와 단순 룰 비교가 갈렸습니다 — 본인이 추가 검토 후 결정.</div></div>
-
-      <div class="thesis">
-        <b>투자 논거</b>: 심층 분석 매수. fwd PER 17.9, DART 영업익 +188% 모멘텀 견고. 한국 빅3 lock-in + Triplex 독점. 🟡 1차 진입 비중 50→30% 축소 (2026-05-01) — PBR 5.14 + 1년 +180% 단기 과열로 보수화. 진입가·손절은 동일.
       </div>
 
-      <div class="trade-guide">
-        <div class="tg-section">
-          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩49,500</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩45,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">₩41,000</span>
-          </div>
-        </div>
-        <div class="tg-section">
-          <div class="tg-title">🎯 분할 익절</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩54,200</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩62,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
-          </div>
-        </div>
-        <div class="tg-section tg-bottom">
-          <span>🛑 손절: <b>₩42,100</b></span>
-          <span>⏱ 보유 중기</span>
-          <span class="tg-note">분석 기준가 ₩49,550</span>
-        </div>
+      <div class="simple-block">
+        <div class="block-title">💰 가격</div>
+        <div class="block-content">❌ 탈락 같은 업종 평균보다 비쌈</div>
+      </div>
+
+      <div class="trade-bar">
+        <span><small>진입</small> <b>₩49,500</b></span>
+        <span><small>손절</small> <b>₩42,100</b></span>
+        <span><small>익절</small> <b>₩54,200</b></span>
       </div>
       
         <div class="catalyst">
@@ -379,7 +302,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="research/shipbuilding/017960-한국카본.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/017960-한국카본.md" target="_blank">📋 상세 분석 노트</a>
       </div>
     </div>
     
@@ -388,7 +311,7 @@
         <div class="title">
           <span class="grade-badge" style="background:#2e7d32;">매수</span>
           <span class="name">피에스케이</span>
-          <span class="code">319660 · 반도체 · 반도체 장비 (Dry Strip / Bevel Etch)</span>
+          <span class="code">319660 · 반도체</span>
         </div>
         <div class="price">
           <div class="price-main">₩100,100</div>
@@ -396,69 +319,22 @@
         </div>
       </div>
 
-      
-      <div class="funnel-block funnel-block-fail">
-        <div class="funnel-header">
-          🤖 <b>가격·타이밍·위험 자동 점검</b> ❌
+      <div class="simple-block">
+        <div class="block-title">📈 실적</div>
+        <div class="block-content">
+          매출 <b>+35.7%</b> <small>(지난 1년)</small>  ·  이익 <b>-</b> <small>예상 (내년)</small>
         </div>
-        <div class="funnel-row">
-          <span class="funnel-cell">✅ 통과 <b>가격</b> — <small>같은 업종 평균보다 4% 싸다</small></span>
-          <span class="funnel-cell">🔥 과열 <b>타이밍</b> — <small>신고가 부근 (52주 위치 99%), 오늘 +12.9%</small></span>
-          <span class="funnel-cell">✅ 안전 <b>한국 위험</b> — <small>확인된 위험 없음</small></span>
-        </div>
-        <details class="reliability">
-          <summary>🛡️ 분석 신뢰도 6/7 통과 (1개 검토 필요)</summary>
-          <ul class="reliability-list"><li>✅ 여러 데이터 출처 일치</li>
-<li>⚠️ 점수 안정성 (어제 대비 큰 변동 없음) <small style="color:#c62828;">— 본인이 검토 필요</small></li>
-<li>✅ 추가 정보 출처 확인</li>
-<li>✅ 추가 정보 반영 정상</li>
-<li>✅ 분석 자가 검증 통과</li>
-<li>✅ 보유·관찰 종목 추적</li>
-<li>✅ 지난 추천 적중률 검증</li></ul>
-        </details>
-      </div>
-    
-
-      <details class="metrics-details">
-        <summary>📊 상세 지표 펼치기 (이익 대비 가격 · 영업이익률 · 부채비율 등)</summary>
-        <div class="metrics">
-          <div class="metric"><label>이익 대비 가격 (1년 후 예상)</label><value>17.7</value><small class="metric-hint">앞으로 1년 예상 이익 대비 주가가 몇 배인지. 낮을수록 싸다. (전문 용어: 예상 PER · forward PER)</small></div>
-          <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+10%</value><small class="metric-hint">증권사 평균 목표가까지의 상승 폭.</small></div>
-          <div class="metric"><label>영업이익률</label><value>+15.3%</value><small class="metric-hint">매출 100원당 영업이익. 높을수록 이익 잘 내는 회사.</small></div>
-          <div class="metric"><label>매출 성장률</label><value>+35.7%</value><small class="metric-hint">전년 대비 매출 증감.</small></div>
-          <div class="metric"><label>부채비율</label><value>3</value><small class="metric-hint">자본 대비 부채. 높을수록 재무 위험.</small></div>
-          <div class="metric"><label>1년 가격 범위</label><value>₩17,580 ~ ₩101,200</value><small class="metric-hint">52주 최저~최고.</small></div>
-        </div>
-      </details>
-
-      <div class="entry-status entry-wait"><div class="entry-head">🟡 조정 대기 — 1차 진입가 ₩84,000</div><div class="entry-sub">현재가에서 -16.1% 조정 필요 (현재 +19.2% 프리미엄)</div></div>
-
-      <div class="thesis">
-        <b>투자 논거</b>: 심층 분석 매수. fwd PER 15.7 (1차 21.2는 Q4-25 호실적 미반영). 무차입 D/E 3, OPM 15.3%, 매출 +35.7%. Bevel Etch Lam 특허 일부승소. 박경수 회장 청결한 거버넌스. 1Q26 실적 5월 중순 catalyst.
       </div>
 
-      <div class="trade-guide">
-        <div class="tg-section">
-          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩84,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩78,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">₩72,000</span>
-          </div>
-        </div>
-        <div class="tg-section">
-          <div class="tg-title">🎯 분할 익절</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩110,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩125,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -12% 트레일링</span>
-          </div>
-        </div>
-        <div class="tg-section tg-bottom">
-          <span>🛑 손절: <b>₩71,400</b></span>
-          <span>⏱ 보유 중기</span>
-          <span class="tg-note">분석 기준가 ₩88,700</span>
-        </div>
+      <div class="simple-block">
+        <div class="block-title">💰 가격</div>
+        <div class="block-content">✅ 통과 같은 업종 평균보다 4% 싸다</div>
+      </div>
+
+      <div class="trade-bar">
+        <span><small>진입</small> <b>₩84,000</b></span>
+        <span><small>손절</small> <b>₩71,400</b></span>
+        <span><small>익절</small> <b>₩110,000</b></span>
       </div>
       
         <div class="catalyst">
@@ -467,7 +343,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="research/semiconductor/319660-피에스케이.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/semiconductor/319660-피에스케이.md" target="_blank">📋 상세 분석 노트</a>
       </div>
     </div>
     
@@ -476,7 +352,7 @@
         <div class="title">
           <span class="grade-badge" style="background:#2e7d32;">매수</span>
           <span class="name">삼성중공업</span>
-          <span class="code">010140 · 조선 · 대형 조선 (LNG선·FLNG 순수 플레이)</span>
+          <span class="code">010140 · 조선</span>
         </div>
         <div class="price">
           <div class="price-main">₩32,250</div>
@@ -484,69 +360,22 @@
         </div>
       </div>
 
-      
-      <div class="funnel-block funnel-block-fail">
-        <div class="funnel-header">
-          🤖 <b>가격·타이밍·위험 자동 점검</b> ❌
+      <div class="simple-block">
+        <div class="block-title">📈 실적</div>
+        <div class="block-content">
+          매출 <b>+5.1%</b> <small>(지난 1년)</small>  ·  이익 <b>-</b> <small>예상 (내년)</small>
         </div>
-        <div class="funnel-row">
-          <span class="funnel-cell">❌ 탈락 <b>가격</b> — <small>같은 업종 평균보다 비쌈</small></span>
-          <span class="funnel-cell">🟢 적정 <b>타이밍</b> — <small>52주 위치 85%</small></span>
-          <span class="funnel-cell">✅ 안전 <b>한국 위험</b> — <small>확인된 위험 없음</small></span>
-        </div>
-        <details class="reliability">
-          <summary>🛡️ 분석 신뢰도 6/7 통과 (1개 검토 필요)</summary>
-          <ul class="reliability-list"><li>✅ 여러 데이터 출처 일치</li>
-<li>⚠️ 점수 안정성 (어제 대비 큰 변동 없음) <small style="color:#c62828;">— 본인이 검토 필요</small></li>
-<li>✅ 추가 정보 출처 확인</li>
-<li>✅ 추가 정보 반영 정상</li>
-<li>✅ 분석 자가 검증 통과</li>
-<li>✅ 보유·관찰 종목 추적</li>
-<li>✅ 지난 추천 적중률 검증</li></ul>
-        </details>
-      </div>
-    
-
-      <details class="metrics-details">
-        <summary>📊 상세 지표 펼치기 (이익 대비 가격 · 영업이익률 · 부채비율 등)</summary>
-        <div class="metrics">
-          <div class="metric"><label>이익 대비 가격 (1년 후 예상)</label><value>17.8</value><small class="metric-hint">앞으로 1년 예상 이익 대비 주가가 몇 배인지. 낮을수록 싸다. (전문 용어: 예상 PER · forward PER)</small></div>
-          <div class="metric"><label>상승 여력</label><value style="color:#2e7d32;font-weight:bold;">+12%</value><small class="metric-hint">증권사 평균 목표가까지의 상승 폭.</small></div>
-          <div class="metric"><label>영업이익률</label><value>+10.4%</value><small class="metric-hint">매출 100원당 영업이익. 높을수록 이익 잘 내는 회사.</small></div>
-          <div class="metric"><label>매출 성장률</label><value>+5.1%</value><small class="metric-hint">전년 대비 매출 증감.</small></div>
-          <div class="metric"><label>부채비율</label><value>56</value><small class="metric-hint">자본 대비 부채. 높을수록 재무 위험.</small></div>
-          <div class="metric"><label>1년 가격 범위</label><value>₩14,030 ~ ₩35,350</value><small class="metric-hint">52주 최저~최고.</small></div>
-        </div>
-      </details>
-
-      <div class="entry-status entry-immediate"><div class="entry-head">🟢 즉시 분할 매수 가능 — 1차 ₩32,000</div><div class="entry-sub">현재가 vs 1차 진입가: +0.8% (5% 이내)</div><div class="entry-warning">⚠️ <b>주의</b>: 위 🤖 자동 점검은 ❌입니다. 사실·맥락을 종합한 <b>심층 분석 결과(매수)</b>와 단순 룰 비교가 갈렸습니다 — 본인이 추가 검토 후 결정.</div></div>
-
-      <div class="thesis">
-        <b>투자 논거</b>: 심층 분석 매수. fwd PER 17.8. 8년 적자 종결 → 25년 영업익 +71% / 26Q1 잠정 +122% (4-30 발표). 부채 56% (HD현대중공업 180% 대비 압도적). FLNG 287억불 잔고 + 70억불 파이프라인. 최성안 단독대표 청결 거버넌스. HDKSOE와 동시 보유 추천.
       </div>
 
-      <div class="trade-guide">
-        <div class="tg-section">
-          <div class="tg-title">📍 분할 매수 (50/30/20)</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩32,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩30,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">₩27,500</span>
-          </div>
-        </div>
-        <div class="tg-section">
-          <div class="tg-title">🎯 분할 익절</div>
-          <div class="tg-row">
-            <span class="tg-tier">1차 50%</span><span class="tg-price">₩36,000</span>
-            <span class="tg-tier">2차 30%</span><span class="tg-price">₩41,000</span>
-            <span class="tg-tier">3차 20%</span><span class="tg-price">신고가 -10% 트레일링</span>
-          </div>
-        </div>
-        <div class="tg-section tg-bottom">
-          <span>🛑 손절: <b>₩27,200</b></span>
-          <span>⏱ 보유 중기</span>
-          <span class="tg-note">분석 기준가 ₩32,350</span>
-        </div>
+      <div class="simple-block">
+        <div class="block-title">💰 가격</div>
+        <div class="block-content">❌ 탈락 같은 업종 평균보다 비쌈</div>
+      </div>
+
+      <div class="trade-bar">
+        <span><small>진입</small> <b>₩32,000</b></span>
+        <span><small>손절</small> <b>₩27,200</b></span>
+        <span><small>익절</small> <b>₩36,000</b></span>
       </div>
       
         <div class="catalyst">
@@ -555,7 +384,7 @@
         </div>
 
       <div class="card-footer">
-        <a href="research/shipbuilding/010140-삼성중공업.md" target="_blank">📋 상세 분석 노트 — 사업 모델·CEO 리스크·분할 매수 전체 가이드</a>
+        <a href="research/shipbuilding/010140-삼성중공업.md" target="_blank">📋 상세 분석 노트</a>
       </div>
     </div>
     
@@ -618,7 +447,7 @@
   ⚠️ <b>이 대시보드는 개인 투자 분석용</b>입니다. 투자 자문/조언/추천이 아니며, 작성자 본인의 분석 메모입니다.
   공개 데이터(yfinance·KRX·DART) 기반의 자동 산출 결과로 오류·지연·누락이 있을 수 있습니다.
   투자 결정·결과의 모든 책임은 의사결정 본인에게 있습니다.
-  <br><small>Generated at 2026-05-05T22:48:02.985515 · 검토 후 부적합 판정 종목은 노출 제외</small>
+  <br><small>Generated at 2026-05-05T22:58:36.442950 · 검토 후 부적합 판정 종목은 노출 제외</small>
 </div>
 </body>
 </html>
