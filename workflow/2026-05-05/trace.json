@@ -98,8 +98,8 @@
       "backtest_present": true
     },
     "decisions": {
-      "eligible": 0,
-      "blocked": 9
+      "eligible": 1,
+      "blocked": 8
     }
   },
   "results": [
@@ -118,8 +118,8 @@
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 81%"
+        "",
+        "52주 위치 81% (적정)"
       ],
       "korea_risk": [
         "",
@@ -145,8 +145,8 @@
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 94%"
+        "",
+        "52주 위치 94% (적정)"
       ],
       "korea_risk": [
         "",
@@ -172,8 +172,8 @@
         "업종·자기과거 모두보다 비쌈"
       ],
       "timing": [
-        "🔥 과열",
-        "신고가 부근 (52주 위치 97%), 오늘 +17.6%"
+        "",
+        "신고가 부근 (52주 위치 97%, 단기 과열), 오늘 +17.6%"
       ],
       "korea_risk": [
         "",
@@ -199,17 +199,17 @@
         "같은 업종 평균보다 49% 싸다"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 89%"
+        "",
+        "52주 위치 89% (적정)"
       ],
       "korea_risk": [
         "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": false,
+      "passed_gate1": true,
       "passed_gate2": true,
       "passed_gate3": true,
-      "buy_eligible": false
+      "buy_eligible": true
     },
     {
       "code": "329180",
@@ -226,8 +226,8 @@
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 91%"
+        "",
+        "52주 위치 91% (적정)"
       ],
       "korea_risk": [
         "",
@@ -253,16 +253,16 @@
         "같은 업종 평균보다 5% 싸다"
       ],
       "timing": [
-        "🔥 과열",
-        "신고가 부근 (52주 위치 99%), 오늘 +8.1%"
+        "",
+        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +8.1%"
       ],
       "korea_risk": [
         "",
         "다중 위험: 오너/CEO 리스크 + 외부 사법"
       ],
-      "passed_gate1": false,
+      "passed_gate1": true,
       "passed_gate2": false,
-      "passed_gate3": true,
+      "passed_gate3": false,
       "buy_eligible": false
     },
     {
@@ -280,14 +280,14 @@
         "같은 업종 평균보다 4% 싸다"
       ],
       "timing": [
-        "🔥 과열",
-        "신고가 부근 (52주 위치 99%), 오늘 +12.9%"
+        "",
+        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +12.9%"
       ],
       "korea_risk": [
         "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": false,
+      "passed_gate1": true,
       "passed_gate2": false,
       "passed_gate3": true,
       "buy_eligible": false
@@ -307,8 +307,8 @@
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 85%"
+        "",
+        "52주 위치 85% (적정)"
       ],
       "korea_risk": [
         "",
@@ -334,8 +334,8 @@
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
-        "🟢 적정",
-        "52주 위치 85%"
+        "",
+        "52주 위치 85% (적정)"
       ],
       "korea_risk": [
         "",
