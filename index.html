@@ -6,6 +6,10 @@
 <meta name="theme-color" content="#1976d2">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex">
+<!-- iOS Safari 홈 바로가기 캐시 비활성화 — 매번 최신 받아옴 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Stock Dashboard — 2026-05-05</title>
 <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -15,6 +19,8 @@
     .meta { color: #666; font-size: 0.9em; margin-bottom: 24px; }
     .meta a { color: #1976d2; text-decoration: none; margin-right: 16px; }
     .meta a:hover { text-decoration: underline; }
+    .refresh-btn { display: inline-block; background: #1976d2; color: white !important; padding: 4px 10px; border-radius: 4px; font-size: 0.88em; margin-left: 12px; }
+    .refresh-btn:hover { background: #1565c0; text-decoration: none !important; }
     .empty { color: #999; font-style: italic; padding: 16px; background: white; border-radius: 8px; }
 
     /* 매수 카드 */
@@ -160,7 +166,8 @@
 <body>
 <h1>📈 Stock Dashboard</h1>
 <div class="meta">
-  최종 갱신: 2026-05-05T22:38:55.697863 · 매수 4종 · 관찰 1종
+  최종 갱신: 2026-05-05T22:42:12.116606 · 매수 4종 · 관찰 1종
+  <a href="javascript:location.href='?v='+Date.now()" class="refresh-btn">🔄 최신으로 새로고침</a>
 </div>
 
 
@@ -610,7 +617,7 @@
   ⚠️ <b>이 대시보드는 개인 투자 분석용</b>입니다. 투자 자문/조언/추천이 아니며, 작성자 본인의 분석 메모입니다.
   공개 데이터(yfinance·KRX·DART) 기반의 자동 산출 결과로 오류·지연·누락이 있을 수 있습니다.
   투자 결정·결과의 모든 책임은 의사결정 본인에게 있습니다.
-  <br><small>Generated at 2026-05-05T22:39:31.634996 · 검토 후 부적합 판정 종목은 노출 제외</small>
+  <br><small>Generated at 2026-05-05T22:42:47.268779 · 검토 후 부적합 판정 종목은 노출 제외</small>
 </div>
 </body>
 </html>
