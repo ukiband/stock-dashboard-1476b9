@@ -82,12 +82,6 @@
     "scoring": {
       "results_count": 9
     },
-    "llm": {
-      "llm_recos": 0
-    },
-    "pinning": {
-      "pinned_count": 4
-    },
     "sanity": {
       "sanity_present": true
     },
