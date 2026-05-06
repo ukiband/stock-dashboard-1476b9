@@ -89,8 +89,8 @@
       "open_positions": 0
     },
     "decisions": {
-      "eligible": 3,
-      "blocked": 6
+      "eligible": 4,
+      "blocked": 5
     }
   },
   "results": [
@@ -98,53 +98,53 @@
       "code": "357780",
       "name": "솔브레인",
       "sector": "반도체",
-      "fwd_per": 18.7229,
-      "current_price": 458500.0,
-      "sector_avg_per": 18.407664333333333,
+      "fwd_per": 19.033764,
+      "current_price": 466000.0,
+      "sector_avg_per": 19.168646333333335,
       "own_5y_per": null,
-      "pos_52w_pct": 80.93333333333334,
-      "chg_1d_pct": 0.10917030567685337,
+      "pos_52w_pct": 82.93333333333334,
+      "chg_1d_pct": 1.6357688113413316,
       "valuation": [
         "",
-        "같은 업종 평균보다 비쌈"
+        "같은 업종 평균보다 1% 싸다"
       ],
       "timing": [
         "",
-        "52주 위치 81% (적정)"
+        "52주 위치 83% (적정)"
       ],
       "korea_risk": [
         "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": false,
+      "passed_gate1": true,
       "passed_gate2": true,
       "passed_gate3": true,
-      "buy_eligible": false
+      "buy_eligible": true
     },
     {
       "code": "222800",
       "name": "심텍",
       "sector": "반도체",
-      "fwd_per": 18.820827,
-      "current_price": 88200.0,
-      "sector_avg_per": 18.407664333333333,
+      "fwd_per": 20.0158,
+      "current_price": 93800.0,
+      "sector_avg_per": 19.168646333333335,
       "own_5y_per": null,
-      "pos_52w_pct": 93.91979301423027,
-      "chg_1d_pct": 1.379310344827589,
+      "pos_52w_pct": 98.8621997471555,
+      "chg_1d_pct": 6.349206349206349,
       "valuation": [
         "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
         "",
-        "52주 위치 94% (적정)"
+        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +6.3%"
       ],
       "korea_risk": [
         "",
         "주의: 오너/CEO 리스크"
       ],
       "passed_gate1": false,
-      "passed_gate2": true,
+      "passed_gate2": false,
       "passed_gate3": true,
       "buy_eligible": false
     },
@@ -152,19 +152,19 @@
       "code": "103590",
       "name": "일진전기",
       "sector": "전력",
-      "fwd_per": 38.521687,
-      "current_price": 144100.0,
-      "sector_avg_per": 36.56823,
+      "fwd_per": 38.013767,
+      "current_price": 142200.0,
+      "sector_avg_per": 37.824777499999996,
       "own_5y_per": 11.5,
-      "pos_52w_pct": 96.88141157160443,
-      "chg_1d_pct": 17.63265306122448,
+      "pos_52w_pct": 95.32211735740664,
+      "chg_1d_pct": -1.3185287994448291,
       "valuation": [
         "",
         "업종·자기과거 모두보다 비쌈"
       ],
       "timing": [
         "",
-        "신고가 부근 (52주 위치 97%, 단기 과열), 오늘 +17.6%"
+        "신고가 부근 (52주 위치 95%, 단기 과열)"
       ],
       "korea_risk": [
         "",
@@ -179,19 +179,19 @@
       "code": "009540",
       "name": "HD한국조선해양",
       "sector": "조선",
-      "fwd_per": 8.244718,
-      "current_price": 469500.0,
-      "sector_avg_per": 16.30073875,
+      "fwd_per": 7.9461865,
+      "current_price": 452500.0,
+      "sector_avg_per": 15.855878375,
       "own_5y_per": null,
-      "pos_52w_pct": 89.31623931623932,
-      "chg_1d_pct": 1.7334777898158071,
+      "pos_52w_pct": 82.05128205128204,
+      "chg_1d_pct": -3.620873269435565,
       "valuation": [
         "",
-        "같은 업종 평균보다 49% 싸다"
+        "같은 업종 평균보다 50% 싸다"
       ],
       "timing": [
         "",
-        "52주 위치 89% (적정)"
+        "52주 위치 82% (적정)"
       ],
       "korea_risk": [
         "",
@@ -206,19 +206,19 @@
       "code": "329180",
       "name": "HD현대중공업",
       "sector": "조선",
-      "fwd_per": 21.492296,
-      "current_price": 680000.0,
-      "sector_avg_per": 16.30073875,
+      "fwd_per": 20.480894,
+      "current_price": 648000.0,
+      "sector_avg_per": 15.855878375,
       "own_5y_per": null,
-      "pos_52w_pct": 91.17647058823529,
-      "chg_1d_pct": -0.7299270072992692,
+      "pos_52w_pct": 81.76470588235294,
+      "chg_1d_pct": -4.705882352941182,
       "valuation": [
         "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
         "",
-        "52주 위치 91% (적정)"
+        "52주 위치 82% (적정)"
       ],
       "korea_risk": [
         "",
@@ -233,19 +233,19 @@
       "code": "298040",
       "name": "효성중공업",
       "sector": "전력",
-      "fwd_per": 34.614773,
-      "current_price": 4228000.0,
-      "sector_avg_per": 36.56823,
+      "fwd_per": 37.635788,
+      "current_price": 4597000.0,
+      "sector_avg_per": 37.824777499999996,
       "own_5y_per": null,
-      "pos_52w_pct": 99.14780292942743,
-      "chg_1d_pct": 8.077709611451933,
+      "pos_52w_pct": 98.96009673518742,
+      "chg_1d_pct": 8.727530747398294,
       "valuation": [
         "",
-        "같은 업종 평균보다 5% 싸다"
+        "같은 업종 평균보다 0% 싸다"
       ],
       "timing": [
         "",
-        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +8.1%"
+        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +8.7%"
       ],
       "korea_risk": [
         "",
@@ -260,19 +260,19 @@
       "code": "319660",
       "name": "피에스케이",
       "sector": "반도체",
-      "fwd_per": 17.679266,
-      "current_price": 100100.0,
-      "sector_avg_per": 18.407664333333333,
+      "fwd_per": 18.456375,
+      "current_price": 104500.0,
+      "sector_avg_per": 19.168646333333335,
       "own_5y_per": null,
-      "pos_52w_pct": 98.68452523319779,
-      "chg_1d_pct": 12.852311161217589,
+      "pos_52w_pct": 97.64097955515615,
+      "chg_1d_pct": 4.395604395604402,
       "valuation": [
         "",
         "같은 업종 평균보다 4% 싸다"
       ],
       "timing": [
         "",
-        "신고가 부근 (52주 위치 99%, 단기 과열), 오늘 +12.9%"
+        "신고가 부근 (52주 위치 98%, 단기 과열)"
       ],
       "korea_risk": [
         "",
@@ -287,19 +287,19 @@
       "code": "010140",
       "name": "삼성중공업",
       "sector": "조선",
-      "fwd_per": 17.831423,
-      "current_price": 32250.0,
-      "sector_avg_per": 16.30073875,
+      "fwd_per": 17.741348,
+      "current_price": 31850.0,
+      "sector_avg_per": 15.855878375,
       "own_5y_per": null,
-      "pos_52w_pct": 85.45966228893059,
-      "chg_1d_pct": -0.3091190108191699,
+      "pos_52w_pct": 83.58348968105066,
+      "chg_1d_pct": -1.2403100775193798,
       "valuation": [
         "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
         "",
-        "52주 위치 85% (적정)"
+        "52주 위치 84% (적정)"
       ],
       "korea_risk": [
         "",
@@ -314,19 +314,19 @@
       "code": "017960",
       "name": "한국카본",
       "sector": "조선",
-      "fwd_per": 17.634518,
-      "current_price": 48800.0,
-      "sector_avg_per": 16.30073875,
+      "fwd_per": 17.255085,
+      "current_price": 47750.0,
+      "sector_avg_per": 15.855878375,
       "own_5y_per": null,
-      "pos_52w_pct": 84.72182185067743,
-      "chg_1d_pct": -1.5136226034308753,
+      "pos_52w_pct": 81.69501297203806,
+      "chg_1d_pct": -2.1516393442622905,
       "valuation": [
         "",
         "같은 업종 평균보다 비쌈"
       ],
       "timing": [
         "",
-        "52주 위치 85% (적정)"
+        "52주 위치 82% (적정)"
       ],
       "korea_risk": [
         "",
