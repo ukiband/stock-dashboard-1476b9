@@ -1,0 +1,341 @@
+{
+  "date": "2026-05-08",
+  "summaries": {
+    "fetch": {
+      "fetched": 9,
+      "expected": 9,
+      "consistency": [
+        {
+          "name": "솔브레인",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "심텍",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "일진전기",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "HD한국조선해양",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "HD현대중공업",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "효성중공업",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "피에스케이",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "삼성중공업",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        },
+        {
+          "name": "한국카본",
+          "sources": [
+            "yf",
+            "dart"
+          ],
+          "count": 2
+        }
+      ]
+    },
+    "scoring": {
+      "results_count": 9
+    },
+    "sanity": {
+      "sanity_present": true
+    },
+    "monitoring": {
+      "open_positions": 0
+    },
+    "decisions": {
+      "eligible": 4,
+      "blocked": 5
+    }
+  },
+  "results": [
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "sector": "반도체",
+      "fwd_per": 18.875282,
+      "current_price": 461000.0,
+      "sector_avg_per": 19.470001999999997,
+      "own_5y_per": null,
+      "pos_52w_pct": 81.6,
+      "chg_1d_pct": -3.1512605042016806,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 3% 싸다"
+      ],
+      "timing": [
+        "",
+        "52주 위치 82% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "확인된 위험 없음"
+      ],
+      "passed_gate1": true,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": true
+    },
+    {
+      "code": "222800",
+      "name": "심텍",
+      "sector": "반도체",
+      "fwd_per": 21.166655,
+      "current_price": 115800.0,
+      "sector_avg_per": 19.470001999999997,
+      "own_5y_per": null,
+      "pos_52w_pct": 96.1612284069098,
+      "chg_1d_pct": 8.732394366197195,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 비쌈"
+      ],
+      "timing": [
+        "",
+        "신고가 부근 (52주 위치 96%, 단기 과열), 오늘 +8.7%"
+      ],
+      "korea_risk": [
+        "",
+        "주의: 오너/CEO 리스크"
+      ],
+      "passed_gate1": false,
+      "passed_gate2": false,
+      "passed_gate3": true,
+      "buy_eligible": false
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "sector": "전력",
+      "fwd_per": 38.521687,
+      "current_price": 144100.0,
+      "sector_avg_per": 37.2641285,
+      "own_5y_per": 11.5,
+      "pos_52w_pct": 96.85560612329334,
+      "chg_1d_pct": 1.051893408134652,
+      "valuation": [
+        "",
+        "업종·자기과거 모두보다 비쌈"
+      ],
+      "timing": [
+        "",
+        "신고가 부근 (52주 위치 97%, 단기 과열)"
+      ],
+      "korea_risk": [
+        "",
+        "주의: 외부 사법"
+      ],
+      "passed_gate1": false,
+      "passed_gate2": false,
+      "passed_gate3": true,
+      "buy_eligible": false
+    },
+    {
+      "code": "009540",
+      "name": "HD한국조선해양",
+      "sector": "조선",
+      "fwd_per": 7.79107,
+      "current_price": 452000.0,
+      "sector_avg_per": 15.61759275,
+      "own_5y_per": null,
+      "pos_52w_pct": 81.83760683760684,
+      "chg_1d_pct": -3.3155080213903787,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 50% 싸다"
+      ],
+      "timing": [
+        "",
+        "52주 위치 82% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "확인된 위험 없음"
+      ],
+      "passed_gate1": true,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": true
+    },
+    {
+      "code": "329180",
+      "name": "HD현대중공업",
+      "sector": "조선",
+      "fwd_per": 20.282495,
+      "current_price": 658000.0,
+      "sector_avg_per": 15.61759275,
+      "own_5y_per": null,
+      "pos_52w_pct": 84.70588235294117,
+      "chg_1d_pct": -5.05050505050505,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 비쌈"
+      ],
+      "timing": [
+        "",
+        "52주 위치 85% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "주의: 오너/CEO 리스크"
+      ],
+      "passed_gate1": false,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": false
+    },
+    {
+      "code": "298040",
+      "name": "효성중공업",
+      "sector": "전력",
+      "fwd_per": 36.00657,
+      "current_price": 4398000.0,
+      "sector_avg_per": 37.2641285,
+      "own_5y_per": null,
+      "pos_52w_pct": 91.88104791125797,
+      "chg_1d_pct": -4.412084329493593,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 3% 싸다"
+      ],
+      "timing": [
+        "",
+        "52주 위치 92% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "다중 위험: 오너/CEO 리스크 + 외부 사법"
+      ],
+      "passed_gate1": true,
+      "passed_gate2": true,
+      "passed_gate3": false,
+      "buy_eligible": false
+    },
+    {
+      "code": "319660",
+      "name": "피에스케이",
+      "sector": "반도체",
+      "fwd_per": 18.368069,
+      "current_price": 104000.0,
+      "sector_avg_per": 19.470001999999997,
+      "own_5y_per": null,
+      "pos_52w_pct": 93.65991113037823,
+      "chg_1d_pct": -2.3474178403755874,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 6% 싸다"
+      ],
+      "timing": [
+        "",
+        "52주 위치 94% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "확인된 위험 없음"
+      ],
+      "passed_gate1": true,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": true
+    },
+    {
+      "code": "010140",
+      "name": "삼성중공업",
+      "sector": "조선",
+      "fwd_per": 17.846378,
+      "current_price": 31950.0,
+      "sector_avg_per": 15.61759275,
+      "own_5y_per": null,
+      "pos_52w_pct": 84.05253283302065,
+      "chg_1d_pct": -5.192878338278928,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 비쌈"
+      ],
+      "timing": [
+        "",
+        "52주 위치 84% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "확인된 위험 없음"
+      ],
+      "passed_gate1": false,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": false
+    },
+    {
+      "code": "017960",
+      "name": "한국카본",
+      "sector": "조선",
+      "fwd_per": 16.550428,
+      "current_price": 45800.0,
+      "sector_avg_per": 15.61759275,
+      "own_5y_per": null,
+      "pos_52w_pct": 76.03234190008664,
+      "chg_1d_pct": -3.7815126050420145,
+      "valuation": [
+        "",
+        "같은 업종 평균보다 비쌈"
+      ],
+      "timing": [
+        "",
+        "52주 위치 76% (적정)"
+      ],
+      "korea_risk": [
+        "",
+        "확인된 위험 없음"
+      ],
+      "passed_gate1": false,
+      "passed_gate2": true,
+      "passed_gate3": true,
+      "buy_eligible": false
+    }
+  ]
+}
