@@ -89,8 +89,8 @@
       "open_positions": 0
     },
     "decisions": {
-      "eligible": 4,
-      "blocked": 5
+      "eligible": 3,
+      "blocked": 6
     }
   },
   "results": [
@@ -278,7 +278,7 @@
         "",
         "확인된 위험 없음"
       ],
-      "passed_gate1": true,
+      "passed_gate1": false,
       "passed_gate2": false,
       "passed_gate3": true,
       "buy_eligible": false
